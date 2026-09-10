@@ -531,15 +531,9 @@ def trigger_music_pipeline(bot, gvoice_room_id, gvoice_squad_id):
 
             # LUỒNG GIỮ MẠNG
             async def tcp_reader_and_keepalive():
-                last_cmd9_time = time.time()
                 music_started  = False
 
                 while not v_writer.is_closing():
-                    current_time = time.time()
-                    if current_time - last_cmd9_time >= 18:
-                        await send_tcp_cmd(v_writer, 9)
-                        print(f"  [TCP KA] CMD=9 start_speak (keepalive)")
-                        last_cmd9_time = current_time
                     phase = "header"
                     pay_len = 0
                     try:
